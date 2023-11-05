@@ -1,10 +1,12 @@
 package com.example.demodemo.dto;
 
-import jakarta.persistence.Column;
+import com.example.demodemo.token.Token;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -16,5 +18,6 @@ public class UserDto {
     private String nickname;
     private String email;
     private String password;
-    private String token;
+    private List<Token> tokens;
+
 }
