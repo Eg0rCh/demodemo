@@ -18,15 +18,20 @@ import java.util.List;
 public class UserRegistrationFormEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @SequenceGenerator(name="user_infoSequence", sequenceName="user_info_sequence", allocationSize = 1, initialValue = 2)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="user_infoSequence")
+    @Column(name = "id")
     private Long id;
+
     @Column(name = "nick")
     private String nickname;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "password")
     private String password;
+
     @OneToMany(mappedBy ="user")
     private List<Token> tokens;
 }

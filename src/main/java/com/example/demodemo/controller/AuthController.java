@@ -5,7 +5,6 @@ import com.example.demodemo.dto.RegistrationRequest;
 import com.example.demodemo.dto.RegistrationResponse;
 import com.example.demodemo.service.AuthService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

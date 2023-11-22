@@ -7,7 +7,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -21,7 +20,7 @@ public class JwtService {
 
     private long jwtExpiration = 86400000;
 
-    public String generateToken(UserRegistrationFormEntity userRegistrationFormEntity){
+    public String generateToken(UserRegistrationFormEntity userRegistrationFormEntity) {
         Date issuedDate = new Date();
         Date expiration = new Date(issuedDate.getTime() + jwtExpiration);
 
@@ -33,12 +32,13 @@ public class JwtService {
                 .compact();
 
     }
+
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String extractNickname(String token){
+    public String extractNickname(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -46,6 +46,7 @@ public class JwtService {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
+
     private Claims extractAllClaims(String token) {
         return Jwts
                 .parserBuilder()

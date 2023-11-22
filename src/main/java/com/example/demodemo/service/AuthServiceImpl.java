@@ -12,6 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
@@ -44,6 +47,7 @@ public class AuthServiceImpl implements AuthService {
                 .token(jwtToken)
                 .tokenType(TokenType.BEARER)
                 .expired(false)
+                .dateTime(LocalDateTime.now())
                 .build();
         tokenRepository.save(token);
         logger.debug("Token saved for user: {}", entity.getNickname());
